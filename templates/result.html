@@ -1,0 +1,4 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="mt-4">{% if mode %}{{mode}}{% endif %} Result</h1>
+<pre id="log">       {{result}}{% if ip_address %}<br>{{ip_address}} successfully {% if addedOrRemoved == True %}added on{% else %}removed from{% endif %} interface {{interface}}{% endif %}{% if ssh_telnet %}{{ssh_telnet}}{% endif %}
+   </pre> {% endblock content %}

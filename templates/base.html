@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <title>Django Network Automation</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="https://ghalib.edu.af/front_asset/images/logo2.png" style="width: 100px; height: auto;" alt="Ghalib Herat University Photo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'devices' %}">Device List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'configure' %}">Configure</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'verify_config' %}">Verfiy-Configure</a>
+                </li>
+
+                <li class="nav-item" onmouseover="showSubMenu()" onmouseout="hideSubMenu()" style="border-right: 1px solid gray; padding-right: 8px;">
+                    <a class="nav-link" href="#">Ready-made Commands &#128317</a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li><a class="nav-link" href="{% url 'ping' %}">ping</a></li>
+                        <li><a class="nav-link" href="{% url 'tcl_ping' %}">tclsh ping (Cisco)</a></li>
+                        <li><a class="nav-link" href="{% url 'config_ip' %}">config IP Address</a></li>
+                        <li><a class="nav-link" href="{% url 'ssh_telnet' %}">SSH/Telnet</a></li>
+                        <li class="nav-item" onmouseover="showNestedSubMenu(event)" onmouseout="hideSubMenu()">
+                            <a class="nav-link" href="#">MikroTik Devices &#128317</a>
+                            <ul class="nested-sub-menu" style="display: none;">
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_1' %}">interface print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_2' %}">/ip address print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_3' %}">ip route print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_4' %}">routing ospf neighbor print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_8' %}">routing ospf network print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_5' %}">routing bgp peer print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_9' %}">routing bgp network print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_6' %}">routing rip neighbor print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_10' %}">routing rip network print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_7' %}">reboot</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item" onmouseover="showNestedSubMenu(event)" onmouseout="hideSubMenu()">
+                            <a class="nav-link" href="#">CISCO Devices &#128317</a>
+                            <ul class="nested-sub-menu" style="display: none;">
+                                <li><a class="nav-link" href="{% url 'cisco_command_1' %}">show ip interface brief</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_12' %}">show ip protocols</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_13' %}">show ip access-list</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_14' %}">show processes cpu</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_15' %}">show processes cpu | ex 0.00</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_2' %}">show running-config</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_11' %}">show running-config | section router</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_9' %}">show startup-config</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_3' %}">show ip route</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_4' %}">show ip ospf neighbor</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_5' %}">show ip bgp summary</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_6' %}">show ip rip database</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_10' %}">show ip eigrp neighbors</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_7' %}">copy running-config startup-config</a></li>
+                                <li><a class="nav-link" href="{% url 'cisco_command_8' %}">write</a></li>
+                                <!-- <li><a class="nav-link" href="{ url 'cisco_command_16' }">reload</a></li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" style="border-right: 1px solid gray; padding-right: 8px;">
+                    <a class="nav-link" href="{% url 'log' %}">Log</a>
+                </li>
+
+                <li class="nav-item" onmouseover="showSubMenu2()" onmouseout="hideSubMenu2()">
+                    <a class="nav-link" href="#">Backup &#128317</a>
+                    <ul class="sub-menu2" style="display: none;">
+                        <li><a class="nav-link" href="{% url 'backup_devices' %}">Devices</a></li>
+                        <li><a class="nav-link" href="{% url 'backup_logs' %}">Logs</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item" onmouseover="showSubMenu3()" onmouseout="hideSubMenu3()">
+                    <a class="nav-link" href="#">Restore &#128317</a>
+                    <ul class="sub-menu3" style="display: none;">
+                        <li><a class="nav-link" href="{% url 'restore_devices' %}">Devices</a></li>
+                        <li><a class="nav-link" href="{% url 'restore_logs' %}">Logs</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'delete_devices' %}">Reset Devices List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'delete_logs' %}">Reset Logs List</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <script>
+        function showSubMenu() {
+            var subMenu = document.querySelector(".sub-menu");
+            subMenu.style.display = "block";
+        }
+
+        function showNestedSubMenu(event) {
+            var nestedSubMenu = event.target.nextElementSibling;
+            nestedSubMenu.style.display = "block";
+        }
+
+        function hideSubMenu() {
+            var subMenu = document.querySelector(".sub-menu");
+            subMenu.style.display = "none";
+        }
+
+        var listItems = document.querySelectorAll('li');
+        listItems.forEach(function(item) {
+            item.style.listStyleType = 'none';
+        });
+
+        function showSubMenu2() {
+            var subMenu = document.querySelector(".sub-menu2");
+            subMenu.style.display = "block";
+        }
+
+        function hideSubMenu2() {
+            var subMenu = document.querySelector(".sub-menu2");
+            subMenu.style.display = "none";
+        }
+
+        function showSubMenu3() {
+            var subMenu = document.querySelector(".sub-menu3");
+            subMenu.style.display = "block";
+        }
+
+        function hideSubMenu3() {
+            var subMenu = document.querySelector(".sub-menu3");
+            subMenu.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
