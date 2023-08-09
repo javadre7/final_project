@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Backup {{mode}} completed, go to App Directory, the filename is "backup_{{mode}}.json"</h1>
+{% for dev in json %}
+<p>Model: {{ dev.model }}</p>
+<p>Primary Key: {{ dev.pk }}</p>
+<ul>
+    {% for key, value in dev.fields.items %}
+    <li>{{ key }}: {{ value }}</li>
+    {% endfor %}
+</ul>
+<p>**********************************************************</p>
+{% endfor %} {% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Restore completed, "backup_file.json" >> Application DataBase</h1>
+{% for dev in json %}
+<p>Model: {{ dev.model }}</p>
+<p>Primary Key: {{ dev.pk }}</p>
+<ul>
+    {% for key, value in dev.fields.items %}
+    <li>{{ key }}: {{ value }}</li>
+    {% endfor %}
+</ul>
+<p>**********************************************************</p>
+{% endfor %} {% endblock content %}
