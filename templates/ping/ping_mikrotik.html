@@ -1,0 +1,99 @@
+{% extends "base.html" %} {% block content %}
+<h1></h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="additional" value="three">
+
+    <div class="flex-container">
+        <label for="des">Destination IP Address:</label>
+        <div class="flex-inputs">
+            <input type="text" name="des" id="des" maxlength="3" required pattern="[0-9]*" min="0" max="255">
+            <span>.</span>
+            <input type="text" name="des2" maxlength="3" required pattern="[0-9]*" min="0" max="255">
+            <span>.</span>
+            <input type="text" name="des3" maxlength="3" required pattern="[0-9]*" min="0" max="255">
+            <span>.</span>
+            <input type="text" name="des4" maxlength="3" required pattern="[0-9]*" min="0" max="255">
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <label for="src">Source IP Address (Default=Empty):</label>
+        <div class="flex-inputs">
+            <input type="text" name="src" id="src" maxlength="3" pattern="[0-9]*" min="0" max="255">
+            <span>.</span>
+            <input type="text" name="src2" maxlength="3" pattern="[0-9]*" min="0" max="255">
+            <span>.</span>
+            <input type="text" name="src3" maxlength="3" pattern="[0-9]*" min="0" max="255">
+            <span>.</span>
+            <input type="text" name="src4" maxlength="3" pattern="[0-9]*" min="0" max="255">
+        </div>
+    </div>
+    <br>
+    <div class="flex-container-2">
+        <div class="flex-inputs-2">
+          <label for="count">count: </label>
+          <input type="text" name="count" id="count" required pattern="[0-9]*" value="4">
+          <span>ping message(s)</span>
+        </div>
+        <br>
+        <div class="flex-inputs-2">
+          <label for="size">size: </label>
+          <input type="text" name="size" id="size" required pattern="[0-9]*" value="56">
+          <span>byte(s)</span>
+        </div>
+        <br>
+        <div class="flex-inputs-2">
+          <label for="interval">interval: </label>
+          <input type="text" name="interval" id="interval" required pattern="[0-9]*" value="1">
+          <span>second(s)</span>
+        </div>
+      </div>
+    
+
+    <button type="submit" class="mt-3 btn btn-primary">Submit</button>
+
+</form>
+
+<script>
+    var style =
+        .flex - container {
+            display: flex;
+            align - items: center;
+            margin - bottom: 10 px;
+        }
+
+    .flex - inputs {
+        display: flex;
+        align - items: center;
+    }
+
+    .flex - inputs input {
+        margin - right: 5 px;
+    };
+
+    var styleElement = document.createElement('style');
+    styleElement.innerHTML = style;
+    document.head.appendChild(styleElement);
+</script>
+<style>
+    .flex-container-2 {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .flex-inputs-2 {
+      display: flex;
+      align-items: center;
+    }
+  
+    .flex-inputs-2 > label {
+      margin-right: 0.5rem;
+    }
+  
+    .flex-inputs-2 > input {
+      margin-right: 0.25rem;
+    }
+  </style>
+
+{% endblock content %}
