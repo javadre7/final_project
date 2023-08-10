@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<h1></h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="additional" value="two">
+
+    <div class="flex-container">
+        <p>check for enable - uncheck for disable:</p>
+        <div class="flex-inputs">
+          <label for="ssh">SSH:</label>
+          <input type="checkbox" name="ssh" id="ssh" checked>
+
+          <label for="telnet">Telnet:</label>
+          <input type="checkbox" name="telnet" id="telnet" checked>
+
+          <label for="connections">connections: </label>
+          <input type="text" name="connections" id="connections" required pattern="[0-9]*" value="4">
+        </div>
+    </div>
+
+    <button type="submit" class="mt-3 btn btn-primary">Submit</button>
+
+</form>
+
+{% endblock content %}
