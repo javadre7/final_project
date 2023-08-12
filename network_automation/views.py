@@ -1,10 +1,9 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Device, Log
 import paramiko, time
 from datetime import datetime
 
 import subprocess, json
-from django.http import HttpResponse
 
 import re
 
