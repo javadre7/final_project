@@ -28,11 +28,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'devices' %}">Device List</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'configure' %}">Configure</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'verify_config' %}">Verfiy-Configure</a>
+
+                <li class="nav-item" onmouseover="showSubMenu0()" onmouseout="hideSubMenu0()">
+                    <a class="nav-link" href="#">Manual Configuration &#128317</a>
+                    <ul class="sub-menu0" style="display: none;">
+                        <li><a class="nav-link" href="{% url 'configure' %}">Configure</a></li>
+                        <li><a class="nav-link" href="{% url 'verify_configure' %}">Verfiy-Configure</a></li>
+                    </ul>
                 </li>
 
                 <li class="nav-item" onmouseover="showSubMenu()" onmouseout="hideSubMenu()" style="border-right: 1px solid gray; padding-right: 8px;">
@@ -46,7 +48,7 @@
                             <a class="nav-link" href="#">MikroTik Devices &#128317</a>
                             <ul class="nested-sub-menu" style="display: none;">
                                 <li><a class="nav-link" href="{% url 'mikrotik_command_1' %}">interface print</a></li>
-                                <li><a class="nav-link" href="{% url 'mikrotik_command_2' %}">/ip address print</a></li>
+                                <li><a class="nav-link" href="{% url 'mikrotik_command_2' %}">ip address print</a></li>
                                 <li><a class="nav-link" href="{% url 'mikrotik_command_3' %}">ip route print</a></li>
                                 <li><a class="nav-link" href="{% url 'mikrotik_command_4' %}">routing ospf neighbor print</a></li>
                                 <li><a class="nav-link" href="{% url 'mikrotik_command_8' %}">routing ospf network print</a></li>
@@ -99,13 +101,13 @@
                         <li><a class="nav-link" href="{% url 'restore_logs' %}">Logs</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'delete_devices' %}">Reset Devices List</a>
+                <li class="nav-item" onmouseover="showSubMenu4()" onmouseout="hideSubMenu4()">
+                    <a class="nav-link" href="#">Reset &#128317</a>
+                    <ul class="sub-menu4" style="display: none;">
+                        <li><a class="nav-link" href="{% url 'delete_devices' %}">Devices</a></li>
+                        <li><a class="nav-link" href="{% url 'delete_logs' %}">Logs</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'delete_logs' %}">Reset Logs List</a>
-                </li>
-
             </ul>
         </div>
     </nav>
@@ -154,6 +156,26 @@
 
         function hideSubMenu3() {
             var subMenu = document.querySelector(".sub-menu3");
+            subMenu.style.display = "none";
+        }
+
+        function showSubMenu4() {
+            var subMenu = document.querySelector(".sub-menu4");
+            subMenu.style.display = "block";
+        }
+
+        function hideSubMenu4() {
+            var subMenu = document.querySelector(".sub-menu4");
+            subMenu.style.display = "none";
+        }
+
+        function showSubMenu0() {
+            var subMenu = document.querySelector(".sub-menu0");
+            subMenu.style.display = "block";
+        }
+
+        function hideSubMenu0() {
+            var subMenu = document.querySelector(".sub-menu0");
             subMenu.style.display = "none";
         }
     </script>
