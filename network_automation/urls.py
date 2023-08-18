@@ -38,7 +38,6 @@ urlpatterns = [
     path('cisco_command_13', views.cisco_command_13, name='cisco_command_13'),
     path('cisco_command_14', views.cisco_command_14, name='cisco_command_14'),
     path('cisco_command_15', views.cisco_command_15, name='cisco_command_15'),
-    # path('cisco_command_16', views.cisco_command_16, name='cisco_command_16'),
     path('config_ip/', views.config_ip, name='config_ip'),
     path('ping/', views.ping, name='ping'),
     path('tcl_ping/', views.tcl_ping, name='tcl_ping'),
